@@ -1,0 +1,534 @@
+setup: |
+  echo "🐊 Attempt to install software engineering tools"
+  echo "🐊 Will not re-install a tool if it is already installed"
+  pip install pipx
+  pipx install ruff
+  pipx install mypy
+  pipx install symbex
+---
+
+# Assessment of Honor Code {{{
+
+- README.md:
+    - description: Ensure that the README.md file exists inside of the root of the GitHub repository
+      check: ConfirmFileExists
+    - description: Delete the phrase 'Add Your Name Here' and add your own name as an Honor Code pledge in README.md
+      check: MatchFileFragment
+      options:
+        fragment: "Add Your Name Here"
+        count: 0
+        exact: true
+    - description: Retype the every word in the Honor Code pledge in README.md
+      check: MatchFileFragment
+      options:
+        fragment: "I adhered to the Allegheny College Honor Code while completing this examination."
+        count: 2
+        exact: true
+
+# }}}
+
+# Question 1 {{{
+
+# Question 1 source code
+
+- source/question_one.py:
+    - description: Ensure that question_one.py file exists in the source/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for question_one.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Create a sufficient number of docstring (i.e., multiple-line) comments in question_one.py
+      check: CountMultipleLineComments
+      options:
+        language: "Python"
+        count: 12
+        exact: true
+
+# run a command: ruff check with default settings found in .ruff.toml file
+- description: Ensure that question_one.py follows an industry-standard programming rules using the command 'ruff check'
+  command: ruff check source/question_one.py
+
+# run a command: ruff format with default settings found in .ruff.toml file
+- description: Ensure that question_one.py adheres to an industry-standard format using the command 'ruff format'
+  command: ruff format source/question_one.py --check
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that question_one.py adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/question_one.py
+
+# run symbex: count functions with full type annotations
+- description: Ensure that source/question_one.py has correct number of fully type annotated functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --fully-typed -f source/question_one.py --count"
+    fragment: 7
+    count: 1
+    exact: true
+
+# run symbex: count functions with docstring-based documentation (note: does not count module docstring)
+- description: Ensure that source/question_one.py has correct number of documented functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --documented -f source/question_one.py --count"
+    fragment: 11
+    count: 1
+    exact: true
+
+# run symbex: confirm that there are no functions that are undocumented (i.e., do not have a docstring)
+- description: Ensure that source/question_one.py has no undocumented functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --undocumented -f source/question_one.py --count"
+    fragment: 0
+    count: 1
+    exact: true
+
+# Question 1 output
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run a program and confirm the correct number of non-blank lines in the output for question 1"
+  check: CountCommandOutput
+  options:
+    command: "python source/question_one.py"
+    count: 3
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 1-a"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_one.py"
+    fragment: "No / Yes / Yes / No / True"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 1-b"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_one.py"
+    fragment: "[[], [], [], [], []] / 5 / [[], [], [], []] / 4 / [[], [], []] / 3 / [[], []] / 2 / [[]] / 1"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 1-c"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_one.py"
+    fragment: "Equilateral / Isosceles / Scalene / True / True"
+    count: 1
+    exact: true
+
+# }}}
+
+# Question 2 {{{
+
+# Question 2 source code
+
+- source/question_two.py:
+    - description: Ensure that question_two.py file exists in the source/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for question_two.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Create a sufficient number of docstring (i.e., multiple-line) comments in question_two.py
+      check: CountMultipleLineComments
+      options:
+        language: "Python"
+        count: 14
+        exact: true
+
+# run a command: ruff check with default settings found in .ruff.toml file
+- description: Ensure that question_two.py follows an industry-standard programming rules using the command 'ruff check'
+  command: ruff check source/question_two.py
+
+# run a command: ruff format with default settings found in .ruff.toml file
+- description: Ensure that question_two.py adheres to an industry-standard format using the command 'ruff format'
+  command: ruff format source/question_two.py --check
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that question_two.py adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/question_two.py
+
+# run symbex: count functions with full type annotations
+- description: Ensure that source/question_two.py has correct number of fully type annotated functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --fully-typed -f source/question_two.py --count"
+    fragment: 9
+    count: 1
+    exact: true
+
+# Question 2 output
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run a program and confirm the correct number of non-blank lines in the output for question 2"
+  check: CountCommandOutput
+  options:
+    command: "python source/question_two.py"
+    count: 3
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 2-a"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_two.py"
+    fragment: "False / False / False / False"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 2-b"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_two.py"
+    fragment: "2 / 6 / 9 / 7 / Exception / True"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 2-c"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_two.py"
+    fragment: "True / True / True / True / True / False"
+    count: 1
+    exact: true
+
+# }}}
+
+# Question 3 {{{
+
+# Question 3 source code
+
+- source/question_three.py:
+    - description: Ensure that question_three.py file exists in the source/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for question_three.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Create a sufficient number of docstring (i.e., multiple-line) comments in question_three.py
+      check: CountMultipleLineComments
+      options:
+        language: "Python"
+        count: 11
+        exact: true
+
+# run a command: ruff check with default settings found in .ruff.toml file
+- description: Ensure that question_three.py follows an industry-standard programming rules using the command 'ruff check'
+  command: ruff check source/question_three.py
+
+# run a command: ruff format with default settings found in .ruff.toml file
+- description: Ensure that question_three.py adheres to an industry-standard format using the command 'ruff format'
+  command: ruff format source/question_three.py --check
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that question_three.py adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/question_three.py
+
+# run symbex: count functions with full type annotations
+- description: Ensure that source/question_three.py has correct number of fully type annotated functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --fully-typed -f source/question_three.py --count"
+    fragment: 6
+    count: 1
+    exact: true
+
+# Question 3 output
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run a program and confirm the correct number of non-blank lines in the output for question 3"
+  check: CountCommandOutput
+  options:
+    command: "python source/question_three.py"
+    count: 3
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 3-a"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_three.py"
+    fragment: "True / ['5', '7', '9', '11'] / False"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 3-b"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_three.py"
+    fragment: "{'5': 5, '7': 7, '9': 9, '11': 11} / {'1': 1, '2': 2, '3': 3, '4': 4} / True"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 3-c"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_three.py"
+    fragment: "{(5, 7, 9, 11): 32} / {(1, 2, 3, 4): 10} / True"
+    count: 1
+    exact: true
+
+# }}}
+
+# Question 4 {{{
+
+# Question 4 source code
+
+- source/question_four.py:
+    - description: Ensure that question_four.py file exists in the source/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for question_four.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Create a sufficient number of docstring (i.e., multiple-line) comments in question_four.py
+      check: CountMultipleLineComments
+      options:
+        language: "Python"
+        count: 9
+        exact: true
+
+# run a command: ruff check with default settings found in .ruff.toml file
+- description: Ensure that question_four.py follows an industry-standard programming rules using the command 'ruff check'
+  command: ruff check source/question_four.py
+
+# run a command: ruff format with default settings found in .ruff.toml file
+- description: Ensure that question_four.py adheres to an industry-standard format using the command 'ruff format'
+  command: ruff format source/question_four.py --check
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that question_four.py adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/question_four.py
+
+# run symbex: count functions with full type annotations
+- description: Ensure that source/question_four.py has correct number of fully type annotated functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --fully-typed -f source/question_four.py --count"
+    fragment: 4
+    count: 1
+    exact: true
+
+# Question 4 output
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run a program and confirm the correct number of non-blank lines in the output for question 4"
+  check: CountCommandOutput
+  options:
+    command: "python source/question_four.py"
+    count: 3
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 4-a"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_four.py"
+    fragment: "True / True / False / False"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 4-b"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_four.py"
+    fragment: "True / False / False / True"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 4-c"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_four.py"
+    fragment: "11 / 1 / 10"
+    count: 1
+    exact: true
+
+# }}}
+
+# Question 5 {{{
+
+# Question 5 source code
+
+- source/question_five.py:
+    - description: Ensure that question_five.py file exists in the source/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for question_five.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Create a sufficient number of docstring (i.e., multiple-line) comments in question_five.py
+      check: CountMultipleLineComments
+      options:
+        language: "Python"
+        count: 11
+        exact: true
+
+# run a command: ruff check with default settings found in .ruff.toml file
+- description: Ensure that question_five.py follows an industry-standard programming rules using the command 'ruff check'
+  command: ruff check source/question_five.py
+
+# run a command: ruff format with default settings found in .ruff.toml file
+- description: Ensure that question_five.py adheres to an industry-standard format using the command 'ruff format'
+  command: ruff format source/question_five.py --check
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that question_five.py adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/question_five.py
+
+# run symbex: count functions with full type annotations
+- description: Ensure that source/question_five.py has correct number of fully type annotated functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --fully-typed -f source/question_five.py --count"
+    fragment: 3
+    count: 1
+    exact: true
+
+# Question 5 output
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run a program and confirm the correct number of non-blank lines in the output for question 5"
+  check: CountCommandOutput
+  options:
+    command: "python source/question_five.py"
+    count: 3
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 5-a"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_five.py"
+    fragment: "7"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 5-b"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_five.py"
+    fragment: "[INFO] Opened the file / [WARNING] Executed dangerous if statement / [CRITICAL] Unresolved network error"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 5-c"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_five.py"
+    fragment: "(12, 10, '>') / (3, 9, '<') / (2, 2, '=') / True"
+    count: 1
+    exact: true
+
+# }}}
+
+# Question 6 {{{
+
+# Question 6 source code
+
+- source/question_six.py:
+    - description: Ensure that question_six.py file exists in the source/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for question_six.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Create a sufficient number of docstring (i.e., multiple-line) comments in question_six.py
+      check: CountMultipleLineComments
+      options:
+        language: "Python"
+        count: 11
+        exact: true
+
+# run a command: ruff check with default settings found in .ruff.toml file
+- description: Ensure that question_six.py follows an industry-standard programming rules using the command 'ruff check'
+  command: ruff check source/question_six.py
+
+# run a command: ruff format with default settings found in .ruff.toml file
+- description: Ensure that question_six.py adheres to an industry-standard format using the command 'ruff format'
+  command: ruff format source/question_six.py --check
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that question_six.py adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/question_six.py
+
+# run symbex: count functions with full type annotations
+- description: Ensure that source/question_six.py has correct number of fully type annotated functions using the command 'symbex'
+  check: MatchCommandFragment
+  options:
+    command: "symbex -s --fully-typed -f source/question_six.py --count"
+    fragment: 6
+    count: 1
+    exact: true
+
+# Question 6 output
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run a program and confirm the correct number of non-blank lines in the output for question 6"
+  check: CountCommandOutput
+  options:
+    command: "python source/question_six.py"
+    count: 3
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 6-a"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_six.py"
+    fragment: "(0, 0) / (1, 1) / (2, 2) / (3, 3)"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 6-b"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_six.py"
+    fragment: "(0, 0) / (3, 2) / (2, 3) / (1, 1)"
+    count: 1
+    exact: true
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of correct output for question 6-c"
+  check: MatchCommandFragment
+  options:
+    command: "python source/question_six.py"
+    fragment: "0, True) / True"
+    count: 1
+    exact: true
+
+# }}}
+
+# Final Check for Type Consistency in all Python Files {{{
+
+# run a command: mypy with the default settings to confirm type alignment for all functions
+- description: Ensure that all source code adheres to an industry-standard format using the command 'mypy'
+  command: mypy source/*.py
+
+# }}}
