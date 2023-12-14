@@ -132,7 +132,6 @@ def question_three_a():
 
 
 def convert_list_to_paired_dictionary(input_list: List[str]) -> Dict[str, int]:
-    """Convert a list of strings to a dictionary mapping strings to their int values."""
     output_dict_for_pairing = {  }
     for input_value in input_list:
         input_value_int = float(input_value)
