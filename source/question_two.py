@@ -131,7 +131,7 @@ def question_two_a():
 
 # }}}
 
-# Question 2b. {{{
+# TODO: Question 2b. {{{
 
 # Instructions:
 # Fix the defect(s) in the following function.
@@ -207,7 +207,7 @@ def question_two_b():
 
 # }}}
 
-# Question 2c. {{{
+# TODO: Question 2c. {{{
 
 # Instructions:
 # Fix the defect(s) in a function so that it meets the following description
