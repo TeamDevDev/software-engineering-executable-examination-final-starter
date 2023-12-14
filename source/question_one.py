@@ -244,7 +244,7 @@ def classify_triangle(a: int, b: int, c: int):
         # sides b and c are not the same
         else:
             # but sides a and c are the same
-            if a == c:
+            if a  ==  c:
                 return constants.triangle.Isosceles
             # sides a and c are not the same and
             # thus the triangle must be scalene
