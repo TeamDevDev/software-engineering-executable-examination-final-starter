@@ -98,10 +98,9 @@ def question_one_a():
 
 # }}}
 
-# Question 1b. {{{
+# TODO: Question 1b. {{{
 
 # Instructions:
-
 # Implement and/or repair the following function that creates a containing list of empty
 # lists (i.e., a list that contains lists that do not have any contents)
 
@@ -195,7 +194,7 @@ def question_one_b():
 
 # }}}
 
-# Question 1c. {{{
+# TODO: Question 1c. {{{
 
 # Instructions:
 # Fix the defect(s) inside of the classify_triangle function so that it
