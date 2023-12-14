@@ -174,7 +174,7 @@ def question_three_b():
 
 # }}}
 
-# Question 3c. {{{
+# TODO: Question 3c. {{{
 
 # Instructions:
 # Implement a function to produce the requested output
