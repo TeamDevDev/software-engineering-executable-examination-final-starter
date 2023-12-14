@@ -67,7 +67,7 @@ from typing import Dict, List, Tuple
 def input_file(file_name: str) -> List[str]:
     """Use a pathlib Path object to read and return the contents of the file."""
     observations_path = Path(file_name)
-    observations_contents = observations_path.read_text()
+    observations_contents = observations_path.read_text(  )
     split_observations_contents = observations_contents.split("\t")
     return split_observations_contents
 
