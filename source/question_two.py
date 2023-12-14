@@ -59,7 +59,7 @@ from exam import constants
 # Example:
 # Calling equals("Hello", mutate("Hello")) should return False
 # because the mutated version of the string "Hello" is not
-# the same as the original string itself. TODO that when the equals
+# the same as the original string itself. Note that when the equals
 # function receives an input string and the mutated version of the
 # same input string it should always return False because the mutated
 # version of the input string is not the same as the original string.
