@@ -117,7 +117,7 @@ def question_four_a():
 
 # }}}
 
-# Question 4b. {{{
+# TODO: Question 4b. {{{
 
 # Instructions:
 # Implement the following function so as to ensure
@@ -218,7 +218,7 @@ def question_four_b():
 
 # }}}
 
-# Question 4c. {{{
+# TODO: Question 4c. {{{
 
 # Instructions:
 # Implement the following function so as to ensure
