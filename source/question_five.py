@@ -158,7 +158,7 @@ def question_five_b():
 
 # }}}
 
-# Question 5c. {{{
+# TODO: Question 5c. {{{
 
 # Instructions:
 # Implement the following function so that it produces output
@@ -190,40 +190,17 @@ def question_five_b():
 # otherwise, the test_determine_relationship function should return False
 
 
-def determine_relationship(input_one: int, input_two: int) -> Tuple[int, int, str]:
-    """Determine the numerical relationship between the two input values."""
-    if input_one < input_two:
-        return (input_one, input_two, "<")
-    elif input_one > input_two:
-        return (input_one, input_two, ">")
-    else:
-        return (input_one, input_two, "=")
+def determine_relationship(input_one, input_two):
+    return (input_one, input_two, ">")
 
 
 def test_determine_relationship() -> bool:
     """Confirm that the determine_relationship function works correctly."""
     # test case one
-    input_one = 12
-    input_two = 10
-    expected = (12, 10, ">")
-    actual = determine_relationship(input_one, input_two)
-    if actual != expected:
-        return False
     # test case two
-    input_one = 10
-    input_two = 12
-    expected = (10, 12, "<")
-    actual = determine_relationship(input_one, input_two)
-    if actual != expected:
-        return False
     # test case three
-    input_one = 10
-    input_two = 10
-    expected = (10, 10, "=")
-    actual = determine_relationship(input_one, input_two)
-    if actual != expected:
-        return False
-    return True
+    # all test cases passed
+    return False
 
 
 def question_five_c():

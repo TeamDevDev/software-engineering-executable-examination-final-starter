@@ -66,7 +66,6 @@ from exam import constants
 
 
 def delete_random_character(s: str) -> str:
-    """Return the input string with a random character deleted."""
     if s == constants.fuzzing.Empty_String:
         return "0"
     pos = random.randint(0, len(s) - 1)

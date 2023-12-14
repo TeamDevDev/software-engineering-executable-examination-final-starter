@@ -225,7 +225,6 @@ def question_one_b():
 
 
 def classify_triangle(a: int, b: int, c: int):
-    """Determine whether or not a triangle is equilateral, isosceles, or scalene."""
     # sides a and b are the same
     if a == b:
         # sides b and c are also the same;
